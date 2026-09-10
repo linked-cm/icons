@@ -1,0 +1,80 @@
+{
+  "name": "@_linked/icons",
+  "description": "The Linked icon set: a named, aliased re-export of lucide-react plus a few hand-drawn icons, so every Linked package and app names an icon the same way.",
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linked-cm/icons.git"
+  },
+  "version": "1.0.0",
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
+  "types": "lib/esm/index.d.ts",
+  "license": "MPL-2.0",
+  "scripts": {
+    "start": "yarn linked dev",
+    "build": "rimraf ./lib && yarn build-esm && yarn build-cjs && yarn copy-to-lib && yarn dual-package",
+    "build-esm": "echo \"compiling ESM\" && rimraf ./lib/esm && yarn tsc -p tsconfig-esm.json",
+    "build-cjs": "echo \"compiling CJS\" && rimraf ./lib/cjs && yarn tsc -p tsconfig-cjs.json",
+    "copy-to-lib": "echo 'copying CSS + JSON assets to lib folder' && yarn copyfiles -u 1 'src/**/*.css' 'src/**/*.json' lib/esm && yarn copyfiles -u 1 'src/**/*.css' 'src/**/*.json' lib/cjs",
+    "dual-package": "echo 'adding package.json to each lib folder for dual output support' && yarn tsconfig-to-dual-package ./tsconfig-cjs.json ./tsconfig-esm.json",
+    "changeset": "changeset"
+  },
+  "keywords": [
+    "linked",
+    "icons",
+    "lucide"
+  ],
+  "exports": {
+    ".": {
+      "types": "./lib/esm/index.d.ts",
+      "import": "./lib/esm/index.js",
+      "require": "./lib/cjs/index.js",
+      "development": "./src/index.ts"
+    },
+    "./*.js": {
+      "types": "./lib/esm/*.d.ts",
+      "import": "./lib/esm/*.js",
+      "require": "./lib/cjs/*.js"
+    },
+    "./*": {
+      "development": "./src/*.ts",
+      "types": "./lib/esm/*.d.ts",
+      "import": "./lib/esm/*.js",
+      "require": "./lib/cjs/*.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "lib/esm/*"
+      ]
+    }
+  },
+  "dependencies": {
+    "@_linked/core": "^2.0"
+  },
+  "devDependencies": {
+    "@_linked/cli": "^1.2",
+    "@types/node": "^22.13.14",
+    "@types/react": "^18.0.17",
+    "copyfiles": "^2.4.1",
+    "lucide-react": "^0.439.0",
+    "rimraf": "^5.0.7",
+    "tsconfig-to-dual-package": "^1.2.0",
+    "typescript": "^5.7.3",
+    "@changesets/cli": "^2.27.0",
+    "@changesets/changelog-github": "^0.5.0"
+  },
+  "peerDependencies": {
+    "lucide-react": ">=0.4",
+    "react": "^18 || ^19"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
