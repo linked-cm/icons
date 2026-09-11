@@ -60,15 +60,15 @@
   },
   "devDependencies": {
     "@_linked/cli": "^1.2",
+    "@changesets/changelog-github": "^0.5.0",
+    "@changesets/cli": "^2.27.0",
     "@types/node": "^22.13.14",
     "@types/react": "^18.0.17",
     "copyfiles": "^2.4.1",
     "lucide-react": "^0.439.0",
     "rimraf": "^5.0.7",
     "tsconfig-to-dual-package": "^1.2.0",
-    "typescript": "^5.7.3",
-    "@changesets/cli": "^2.27.0",
-    "@changesets/changelog-github": "^0.5.0"
+    "typescript": "^5.7.3"
   },
   "peerDependencies": {
     "lucide-react": ">=0.4",

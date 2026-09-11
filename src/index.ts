@@ -12,6 +12,5 @@
  * `lucide-react` is a peer dependency: the icons are re-exported, not wrapped, so a single
  * copy has to be shared with the consuming app or the same glyph exists twice in the bundle.
  */
-import './types';
 
 export * from './icons.js';
